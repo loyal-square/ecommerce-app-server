@@ -17,6 +17,18 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ImageResponse": {
+				"properties": {
+					"imageBase64": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"imageBase64"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {}
@@ -48,6 +60,34 @@
 				},
 				"security": [],
 				"parameters": []
+			}
+		},
+		"/api/v1/images/{fileName}": {
+			"get": {
+				"operationId": "GetImage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ImageResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "fileName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			}
 		}
 	},
