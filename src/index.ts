@@ -3,10 +3,16 @@ import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 import cors from "cors";
 import Router from "./routes";
-import "./aws";
 import dotenv from "dotenv";
 import imagesRouter from "./routes/images";
 dotenv.config();
+import AWS from "aws-sdk";
+// Set up AWS credentials and region
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
+});
 
 const PORT = process.env.PORT || 8000;
 

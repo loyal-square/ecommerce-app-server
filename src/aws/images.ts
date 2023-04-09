@@ -24,7 +24,7 @@ export async function uploadToS3(file: File) {
 
 export async function getImageFromS3(fileName: string): Promise<string> {
   const params = {
-    Bucket: "loyalsquare-ecommerce-images",
+    Bucket: process.env.AWS_S3_BUCKET_NAME as string,
     Key: fileName,
   };
   // Create S3 object
